@@ -22,8 +22,9 @@ public class Job {
         nextId++;
     }
 
-    public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency){
+    public Job (String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency){
         this();
+
         this.name =name;
         this.employer = employer;
         this.location =location;
@@ -50,10 +51,48 @@ public class Job {
     }
 
 
+    @Override
+    public String toString() {
+        String noData ="Data not available";
+
+
+        if(id != 0 && name == null && employer.getValue()== null && location.getValue()== null && positionType.getValue() == null && coreCompetency.getValue()==null){
+            return "OOPS! This job does not seem to exist.";
+        }
+
+
+        if(name ==""){
+            name = noData;
+        }
+
+        if(employer.getValue()==""){
+            employer.setValue(noData);
+        }
+
+        if(location.getValue()== ""){
+            location.setValue(noData);
+        }
+
+        if(positionType.getValue() ==""){
+            positionType.setValue(noData);
+        }
+
+        if(coreCompetency.getValue()==""){
+            coreCompetency.setValue(noData);
+        }
+
+
+        return "\nID: " + id+
+                "\nName: " + name +
+                "\nEmployer: " + employer.getValue() +
+                "\nLocation: " + location.getValue() +
+                "\nPosition Type: " + positionType.getValue() +
+                "\nCore Competency: "+ coreCompetency.getValue() +"\n";
+    }
+
+
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.
-
-
 
 
 
@@ -100,4 +139,7 @@ public class Job {
     public int getId() {
         return id;
     }
+
+
+
 }
